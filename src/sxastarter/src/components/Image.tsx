@@ -1,16 +1,17 @@
-import React, { CSSProperties } from 'react';
 import {
+  EditMode,
+  Field,
+  ImageField,
   Image as JssImage,
   Link as JssLink,
-  ImageField,
-  Field,
   LinkField,
   Text,
   useSitecoreContext,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import React, { CSSProperties } from 'react';
 
 interface Fields {
-  Image: ImageField;
+  Image: ImageField & { metadata?: { [key: string]: unknown } };
   ImageCaption: Field<string>;
   TargetUrl: LinkField;
 }
@@ -29,8 +30,10 @@ const ImageDefault = (props: ImageProps): JSX.Element => (
 );
 
 export const Banner = (props: ImageProps): JSX.Element => {
+  const id = props.params.RenderingIdentifier;
   const { sitecoreContext } = useSitecoreContext();
   const isPageEditing = sitecoreContext.pageEditing;
+  const isMetadataMode = sitecoreContext?.editMode === EditMode.Metadata;
   const classHeroBannerEmpty =
     isPageEditing && props.fields?.Image?.value?.class === 'scEmptyImage'
       ? 'hero-banner-empty'
@@ -38,13 +41,21 @@ export const Banner = (props: ImageProps): JSX.Element => {
   const backgroundStyle = (props?.fields?.Image?.value?.src && {
     backgroundImage: `url('${props.fields.Image.value.src}')`,
   }) as CSSProperties;
-  const modifyImageProps = {
-    ...props.fields.Image,
-    editable: props?.fields?.Image?.editable
-      ?.replace(`width="${props?.fields?.Image?.value?.width}"`, 'width="100%"')
-      .replace(`height="${props?.fields?.Image?.value?.height}"`, 'height="100%"'),
-  };
-  const id = props.params.RenderingIdentifier;
+  const modifyImageProps = !isMetadataMode
+    ? {
+        ...props.fields.Image,
+        editable: props?.fields?.Image?.editable
+          ?.replace(`width="${props?.fields?.Image?.value?.width}"`, 'width="100%"')
+          .replace(`height="${props?.fields?.Image?.value?.height}"`, 'height="100%"'),
+      }
+    : {
+        ...props.fields.Image,
+        value: {
+          ...props.fields.Image.value,
+          width: '100%',
+          height: '100%',
+        },
+      };
 
   return (
     <div
