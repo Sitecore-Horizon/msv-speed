@@ -2,7 +2,7 @@ import {
   EditMode,
   Field,
   ImageField,
-  Image as JssImage,
+  NextImage as JssImage,
   Link as JssLink,
   LinkField,
   Text,
@@ -52,8 +52,7 @@ export const Banner = (props: ImageProps): JSX.Element => {
         ...props.fields.Image,
         value: {
           ...props.fields.Image.value,
-          width: '100%',
-          height: '100%',
+          style: { width: '100%', height: '100%' },
         },
       };
 

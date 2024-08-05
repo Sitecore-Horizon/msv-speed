@@ -1,10 +1,10 @@
 {
-  "name": "Headless",
+  "name": "sxastarter",
   "description": "Application utilizing Sitecore JavaScript Services and Next.js",
-  "version": "22.1.0-canary",
+  "version": "22.2.0-canary",
   "private": true,
   "config": {
-    "appName": "Headless",
+    "appName": "sxastarter",
     "rootPlaceholders": [
       "jss-main"
     ],
@@ -13,8 +13,9 @@
     "language": "en",
     "templates": [
       "nextjs",
+      "nextjs-xmcloud",
       "nextjs-sxa",
-      "nextjs-xmcloud"
+      "nextjs-multisite"
     ]
   },
   "author": {
@@ -30,9 +31,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@sitecore-cloudsdk/events": "^0.3.0",
+    "@sitecore-cloudsdk/events": "^0.3.1",
     "@sitecore-feaas/clientside": "^0.5.17",
-    "@sitecore-jss/sitecore-jss-nextjs": "~22.1.0-canary",
+    "@sitecore-jss/sitecore-jss-nextjs": "~22.2.0-canary",
     "@sitecore/components": "^1.1.10",
     "bootstrap": "^5.1.3",
     "font-awesome": "^4.7.0",
@@ -43,7 +44,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.52.3",
-    "sass-alias": "^1.0.5"
+    "sass-alias": "^1.0.5",
+    "sharp": "0.32.6"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^5.0.0",
@@ -54,8 +56,8 @@
     "@graphql-codegen/typescript-operations": "^4.0.1",
     "@graphql-codegen/typescript-resolvers": "^4.0.1",
     "@graphql-typed-document-node/core": "^3.2.0",
-    "@sitecore-jss/sitecore-jss-cli": "~22.1.0-canary",
-    "@sitecore-jss/sitecore-jss-dev-tools": "~22.1.0-canary",
+    "@sitecore-jss/sitecore-jss-cli": "~22.2.0-canary",
+    "@sitecore-jss/sitecore-jss-dev-tools": "~22.2.0-canary",
     "@types/node": "^20.14.2",
     "@types/react": "^18.2.22",
     "@types/react-dom": "^18.0.5",
