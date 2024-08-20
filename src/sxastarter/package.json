@@ -1,10 +1,10 @@
 {
-  "name": "sxastarter",
+  "name": "Headless",
   "description": "Application utilizing Sitecore JavaScript Services and Next.js",
   "version": "22.2.0-canary",
   "private": true,
   "config": {
-    "appName": "sxastarter",
+    "appName": "Headless",
     "rootPlaceholders": [
       "jss-main"
     ],
@@ -13,9 +13,8 @@
     "language": "en",
     "templates": [
       "nextjs",
-      "nextjs-xmcloud",
       "nextjs-sxa",
-      "nextjs-multisite"
+      "nextjs-xmcloud"
     ]
   },
   "author": {
